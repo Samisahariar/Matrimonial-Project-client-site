@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 
+
 const Main = () => {
     return (
         <div>
@@ -7,5 +8,7 @@ const Main = () => {
         </div>
     );
 };
+
+
 
 export default Main;

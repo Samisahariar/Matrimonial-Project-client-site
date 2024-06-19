@@ -12,46 +12,50 @@
 }
 
 .number-slide1 {
-  background: rgb(64, 175, 255);
-  background: linear-gradient(128deg,
-      rgba(64, 175, 255, 1) 0%,
-      rgba(63, 97, 255, 1) 100%);
+  background: url("https://i.ibb.co/khwVgQh/photo-1520342868574-5fa3804e551c-q-80-w-1471-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .number-slide2 {
-  background: rgb(255, 75, 64);
-  background: linear-gradient(128deg,
-      rgba(255, 154, 63, 1) 0%,
-      rgba(255, 75, 64, 1) 100%);
+  background: url("https://i.ibb.co/D9zzPWq/photo-1445117627052-274425469152-q-80-w-1476-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .number-slide3 {
-  background: rgb(182, 255, 64);
-  background: linear-gradient(128deg,
-      rgba(182, 255, 64, 1) 0%,
-      rgba(63, 255, 71, 1) 100%);
-  background: linear-gradient(128deg,
-      rgba(189, 255, 83, 1) 0%,
-      rgba(43, 250, 82, 1) 100%);
+  background: url("https://i.ibb.co/WvkQBv5/photo-1522673607200-164d1b6ce486-q-80-w-1470-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .number-slide4 {
-  background: rgb(64, 255, 242);
-  background: linear-gradient(128deg,
-      rgba(64, 255, 242, 1) 0%,
-      rgba(63, 188, 255, 1) 100%);
+  background: url("https://i.ibb.co/CQ135r4/photo-1481653125770-b78c206c59d4-q-80-w-1470-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .number-slide5 {
-  background: rgb(255, 64, 156);
-  background: linear-gradient(128deg,
-      rgba(255, 64, 156, 1) 0%,
-      rgba(255, 63, 63, 1) 100%);
+  background: url("https://i.ibb.co/Xt11KRF/photo-1439539698758-ba2680ecadb9-q-80-w-1470-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .number-slide6 {
-  background: rgb(64, 76, 255);
-  background: linear-gradient(128deg,
-      rgba(64, 76, 255, 1) 0%,
-      rgba(174, 63, 255, 1) 100%);
+  background: url("https://i.ibb.co/B67H83R/photo-1460978812857-470ed1c77af0-q-80-w-1595-auto-format-fit-crop-ixlib-rb-4-0.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.active{
+  
+}
+.inactive{
+
 }

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&display=swap');
+.bona-nova {
+    font-family: "Bona Nova", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .active{
+    text : P
+  }
