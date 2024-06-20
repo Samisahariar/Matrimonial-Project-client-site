@@ -11,12 +11,17 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "axios": "^1.7.2",
     "firebase": "^10.12.2",
     "keen-slider": "^6.8.6",
+    "lottie-web": "^5.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^6.23.1"
+    "react-hook-form": "^7.52.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-router-dom": "^6.23.1",
+    "sweetalert2": "^11.12.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

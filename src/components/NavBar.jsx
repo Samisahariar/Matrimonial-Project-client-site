@@ -1,6 +1,37 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthInformation";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
+
+
+    const { user, logout } = useContext(AuthContext);
+
+    const handlethelogout = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logout()
+                    .then(res => {
+                        Swal.fire({
+                            title: "LOGGED OUT SUCCESSFULLY ",
+                            text: "The User is successfully logged out !",
+                            icon: "success"
+                        });
+                    })
+            }
+        });
+
+    }
+
 
 
     const navMenus = <>
@@ -15,7 +46,7 @@ const NavBar = () => {
 
         <NavLink to="biodatas"
             className={({ isActive }) =>
-                isActive ? "p-4" : "p-4"
+                isActive ? "p-4 text-red  border-b-2 border-red-500" : "p-4"
             }
 
         >Biodatas</NavLink>
@@ -23,7 +54,7 @@ const NavBar = () => {
 
         <NavLink to="aboutus"
             className={({ isActive }) =>
-                isActive ? "p-4" : "p-4"
+                isActive ? "p-4 text-red border-b-2 border-b-red-500" : "p-4"
             }
 
         >About Us</NavLink>
@@ -57,7 +88,11 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                {
+
+                    user ? <button className="btn btn-ghost" onClick={handlethelogout}>LOG-OUT</button> : <Link to="login"><button className="btn btn-ghost">LOG-IN</button></Link>
+
+                }
             </div>
         </div>
     );
