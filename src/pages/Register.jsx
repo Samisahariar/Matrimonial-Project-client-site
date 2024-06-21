@@ -1,14 +1,17 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthInformation";
 import { ThreeCircles } from "react-loader-spinner";
+import useAxiosusPublic from "../hooks/useAxiosusPublic";
+import Swal from "sweetalert2";
 
 const Register = () => {
+
     const [loader, setLoader] = useState(false);
-
+    const axiousPublic = useAxiosusPublic();
     const { signinwithemail, updateUser, logout, setUser } = useContext(AuthContext);
-
+    const navigate = useNavigate();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
@@ -17,17 +20,32 @@ const Register = () => {
         signinwithemail(email, password)
             .then(res => {
                 const loggedUser = res.user;
-                updateUser(data.name, data.photoURL)
+                updateUser(name, photoURL)
                     .then(() => {
                         logout()
                             .then(res => {
                                 const userInfo = {
                                     name: data.name,
-                                    image: data.photoURL
+                                    image: data.photoURL,
+                                    email: email
                                 };
-                                setLoader(false)
-                                console.log(userInfo)
-                                reset();
+                                axiousPublic.post("users", userInfo)
+                                    .then(res => {
+                                        if (res.data.insertedId) {
+                                            setLoader(false)
+                                            Swal.fire({
+                                                title: 'User Created Successful.',
+                                                showClass: {
+                                                    popup: 'animate__animated animate__fadeInDown'
+                                                },
+                                                hideClass: {
+                                                    popup: 'animate__animated animate__fadeOutUp'
+                                                }
+                                            });
+                                            reset();
+                                            navigate()
+                                        }
+                                    })
                             })
                             .catch(error => {
                                 console.log(error)
@@ -39,7 +57,7 @@ const Register = () => {
                         setLoader(false)
                         console.log(error.message)
                     })
-                
+
             })
             .catch(error => {
                 setLoader(false)
