@@ -10,9 +10,16 @@ import Biodatas from "../pages/Biodatas";
 import Aboutus from "../pages/Aboutus";
 import ContactUs from "../pages/ContactUs";
 import DashBoard from "../layouts/DashBoard";
-import DashboardHome from "../pages/DashboardHome";
+import DashboardHome from "../pages/Dashboard/user/DashboardHome";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import ViewBiodata from "../pages/Dashboard/user/ViewBiodata";
+import MyContact from "../pages/Dashboard/user/MyContact";
+import FavoriteBio from "../pages/Dashboard/user/FavoriteBio";
+import AdminDashboard from "../pages/Dashboard/admin/AdminDashboard";
+import ManageUser from "../pages/Dashboard/admin/ManageUser";
+import ApprovedPremium from "../pages/Dashboard/admin/ApprovedPremium";
+import ApprovedContact from "../pages/Dashboard/admin/ApprovedContact";
 
 
 export const router = createBrowserRouter([
@@ -66,6 +73,34 @@ export const router = createBrowserRouter([
             {
                 path: "profileCrud",
                 element: <DashboardHome></DashboardHome>
+            },
+            {
+                path : "viewbiodata",
+                element : <ViewBiodata></ViewBiodata>
+            },
+            {
+                path : "contactrequest",
+                element : <MyContact></MyContact>
+            },
+            {
+                path : "favbio",
+                element : <FavoriteBio></FavoriteBio>
+            },
+            {
+                path : "adminhome",
+                element : <AdminDashboard></AdminDashboard>
+            },
+            {
+                path : "manageUsers",
+                element : <ManageUser></ManageUser>
+            },
+            {
+                path : "approvedPremium",
+                element : <ApprovedPremium></ApprovedPremium>
+            },
+            {
+                path : "approvedContactRequest",
+                element : <ApprovedContact></ApprovedContact>
             }
         ]
     }

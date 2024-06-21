@@ -3,12 +3,23 @@ import { auth } from "../firebase.config";
 import { GoogleAuthProvider } from "firebase/auth/web-extension";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import useAxiosusPublic from "../hooks/useAxiosusPublic";
+import {
+    useQuery,
+    useMutation,
+    useQueryClient,
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query'
+import useAxiousSecure from "../hooks/useAxiousSecure";
+
+
+const queryClient = new QueryClient()
 
 export const AuthContext = createContext();
 
 const AuthInformation = ({ children }) => {
 
-    const axiousPublic = useAxiosusPublic();
+    const axioussecure = useAxiousSecure();
     const [user, setUser] = useState();
     const [loader, setLoader] = useState();
 
@@ -41,38 +52,37 @@ const AuthInformation = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const usrEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: usrEmail }
             setUser(currentUser);
+            setLoader(false);
             if (currentUser) {
-                // get token and store client
-                const userInfo = { email: currentUser.email };
-                axiousPublic.post('/jwt', userInfo)
+                axioussecure.post('/jwt', loggedUser)
                     .then(res => {
-                        if (res.data.token) {
-                            localStorage.setItem('access-token', res.data.token);
-                            setLoader(false);
-                        }
+                        console.log(res.data)
+                    })
+            } else {
+                axioussecure.post('/logout', loggedUser)
+                    .then(res => {
+                        console.log(res.data)
                     })
             }
-
-            else {
-                // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
-                localStorage.removeItem('access-token');
-                setLoader(false);
-            }
-
-        });
+        })
         return () => {
-            return unsubscribe();
+            unsubscribe()
         }
-    }, )
+    }, [])
 
 
     const name = "sami"
     const authinfo = { loader, user, setUser, name, logout, loginwithgoogle, loginwithemail, signinwithemail, updateUser }
     return (
-        <AuthContext.Provider value={authinfo}>
-            {children}
-        </AuthContext.Provider>
+        <QueryClientProvider client={queryClient}>
+            <AuthContext.Provider value={authinfo}>
+                {children}
+            </AuthContext.Provider>
+        </QueryClientProvider>
+
     );
 };
 
