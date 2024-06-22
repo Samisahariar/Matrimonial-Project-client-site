@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAxiosusPublic from "../../../hooks/useAxiosusPublic";
+import useAxiousSecure from "../../../hooks/useAxiousSecure";
+import { AuthContext } from "../../../components/AuthInformation";
+import useThereBio from "../../../hooks/useThereBio";
+import Swal from "sweetalert2";
 
 
 
 const DashboardHome = () => {
 
+
+    const [isBioData, isPending] = useThereBio();
+
+
+    const { user } = useContext(AuthContext)
+    const axioussecure = useAxiousSecure();
     const axiouspublic = useAxiosusPublic();
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const [startDate, setStartDate] = useState(new Date());
@@ -32,16 +42,37 @@ const DashboardHome = () => {
         const fathersname = form.fathersname.value;
         const mothersname = form.mothersname.value;
         const gender = form.gender.value;
-        const image = form.image.value;
+        const image = form.image.value[0];
 
-        const res = await axiouspublic.post(image_hosting_api, image, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
-        console.log(res)
+        const info = { name, age, gender, email, height, weight, fathersname, mothersname, exheight, exweight, exage, number, bddate, occupation, race, permanentdiv, presentdiv, image }
+        if (!isBioData) {
+            axioussecure.post("/biodatas/create", info)
+            .then(res => {
+                if(res.data.insertedId){
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Bio-Data is being Created !!!",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+            })
+        }else{
+            axioussecure.patch("/biodatas/update", info)
+            .then(res => {
+                if(res.data.matchedCount){
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Bio-Data is being Updated !!!",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                }
+            })
 
-        const info = {name, age, gender, email, height, weight, fathersname, mothersname, exheight, exweight, exage, number, bddate, occupation, race, permanentdiv, presentdiv, image }
+        }
 
     }
 
@@ -192,7 +223,7 @@ const DashboardHome = () => {
                         </select>
                     </div>
                     <div className="relative z-0 w-full mb-5 group">
-                        <input type="email" name="email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                        <input type="email" name="email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " value={user?.email} readOnly />
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contact Email</label>
                     </div>
                     <div className="relative z-0 w-full mb-5 group">
@@ -201,7 +232,13 @@ const DashboardHome = () => {
                     </div>
 
                 </div>
-                <input type="submit" value="Submit" className="btn btn-primary" />
+                {
+                    isBioData ? <input type="submit" value="Update" className="btn btn-primary" /> :
+                        <input type="submit" value="Create" className="btn btn-primary" />
+
+
+                }
+
             </form>
         </div>
     );
