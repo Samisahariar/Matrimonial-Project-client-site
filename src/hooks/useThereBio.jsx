@@ -8,18 +8,15 @@ const useThereBio = () => {
     const axiousSecure = useAxiousSecure();
     const { user } = useContext(AuthContext);
 
-    const { data: isBioData, isPending, refetch } = useQuery({
+    const { data: isBioData, isPending, refetch : responBio } = useQuery({
         queryKey: [user?.email, 'isBioData'],
         queryFn: async () => {
-            console.log('asking or checking is admin', user)
             const res = await axiousSecure.get(`/biodatas/${user?.email}`);
-            // console.log(res.data);
-            console.log(res.data)
             return res.data?.avail
         }
     })
-    
-    return [isBioData, isPending]
+
+    return [isBioData, isPending , responBio]
 
 };
 

@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 const DashboardHome = () => {
 
 
-    const [isBioData, isPending] = useThereBio();
+    const [isBioData, isPending, responBio] = useThereBio();
 
 
     const { user } = useContext(AuthContext)
@@ -56,11 +56,13 @@ const DashboardHome = () => {
                         showConfirmButton: false,
                         timer: 1500
                       });
+                    responBio();
                 }
             })
         }else{
             axioussecure.patch("/biodatas/update", info)
             .then(res => {
+                console.log(res.data)
                 if(res.data.matchedCount){
                     Swal.fire({
                         position: "top-end",
@@ -69,6 +71,7 @@ const DashboardHome = () => {
                         showConfirmButton: false,
                         timer: 1500
                       });
+                    responBio();
                 }
             })
 
