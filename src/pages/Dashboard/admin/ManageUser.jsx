@@ -13,8 +13,8 @@ const ManageUser = () => {
             return res.data;
         }
     });
-    
-    
+
+
     const handleMakeAdmin = ({ _id, name }) => {
         axiousSecure.patch(`/users/admin/${_id}`)
             .then(res => {
@@ -29,14 +29,32 @@ const ManageUser = () => {
                         timer: 1500
                     });
                 }
-            })
+            });
     };
+
+
+    const handleMakePremium = ({ _id, name }) => {
+        console.log(name)
+        axiousSecure.patch(`/users/premium/${_id}`)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${name} is an Premium Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
+    }
 
 
     return (
         <div className="py-10">
             <h3 className="text-center text-5xl">All the Users : </h3>
-            <table className="table w-[60vw]">
+            <table className="table w-[70vw]">
                 {/* head */}
                 <thead>
                     <tr>
@@ -50,7 +68,7 @@ const ManageUser = () => {
                 <tbody>
                     {/* row 1 */}
                     {
-                        users?.map((singleData, idx) => <TableRowAllUsers handleMakeAdmin={handleMakeAdmin} singleData={singleData} key={idx} number={idx}></TableRowAllUsers>)
+                        users?.map((singleData, idx) => <TableRowAllUsers handleMakePremium={handleMakePremium} handleMakeAdmin={handleMakeAdmin} singleData={singleData} key={idx} number={idx}></TableRowAllUsers>)
                     }
                 </tbody>
             </table>

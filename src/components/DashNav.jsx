@@ -1,9 +1,9 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useAdmins from '../hooks/useAdmins';
 
 const DashNav = () => {
 
-    const isAdmin = true;
+    const [isAdmin, isAdminLoading] = useAdmins();
 
     return (
         <div className="w-64 min-h-screen bg-orange-400">
