@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiousSecure from "../../../hooks/useAxiousSecure";
+import TableRowAllUsers from "../../../components/TableRowAllUsers";
+import Swal from "sweetalert2";
 
 const ManageUser = () => {
 
@@ -10,12 +12,48 @@ const ManageUser = () => {
             const res = await axiousSecure.get('/users');
             return res.data;
         }
-    })
-
+    });
     
+    
+    const handleMakeAdmin = ({ _id, name }) => {
+        axiousSecure.patch(`/users/admin/${_id}`)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `${name} is an Admin Now!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+    };
+
+
     return (
-        <div>
-            this is the manage user section and all of the team are looking for{users?.length}
+        <div className="py-10">
+            <h3 className="text-center text-5xl">All the Users : </h3>
+            <table className="table w-[60vw]">
+                {/* head */}
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Make Admin</th>
+                        <th>Make Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {/* row 1 */}
+                    {
+                        users?.map((singleData, idx) => <TableRowAllUsers handleMakeAdmin={handleMakeAdmin} singleData={singleData} key={idx} number={idx}></TableRowAllUsers>)
+                    }
+                </tbody>
+            </table>
         </div>
     );
 };
