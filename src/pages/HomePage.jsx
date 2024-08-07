@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
 import { AuthContext } from '../components/AuthInformation';
+import { Button } from "@/components/ui/button"
+import { useContext } from 'react';
 
 const HomePage = () => {
 
@@ -8,6 +9,7 @@ const HomePage = () => {
     return (
         <div>
             this is the home page of this components {name}
+            <Button variant="destructive">this is the shadcn button</Button>
         </div>
     );
 };

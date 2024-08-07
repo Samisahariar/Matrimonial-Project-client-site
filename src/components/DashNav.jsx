@@ -67,7 +67,7 @@ const DashNav = () => {
                 {/* shared nav links */}
                 <div className="divider"></div>
                 <li>
-                    <NavLink to="/">
+                    <NavLink to="/main/home">
 
                         Home</NavLink>
                 </li>

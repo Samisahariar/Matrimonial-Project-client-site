@@ -3,7 +3,6 @@ import {
 
 } from "react-router-dom";
 import Main from "../layouts/Main";
-import Enter from "../pages/Enter";
 import Home from "../components/Home";
 import HomePage from "../pages/HomePage";
 import Biodatas from "../pages/Biodatas";
@@ -20,6 +19,9 @@ import AdminDashboard from "../pages/Dashboard/admin/AdminDashboard";
 import ManageUser from "../pages/Dashboard/admin/ManageUser";
 import ApprovedPremium from "../pages/Dashboard/admin/ApprovedPremium";
 import ApprovedContact from "../pages/Dashboard/admin/ApprovedContact";
+import BiodataDetails from "../pages/BiodataDetails";
+import Enter from "../pages/EntringPage/BackgroundBeams";
+import BackgroundBeams from "../pages/EntringPage/BackgroundBeams";
 
 
 export const router = createBrowserRouter([
@@ -29,7 +31,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Enter></Enter>
+                element: <BackgroundBeams></BackgroundBeams>
             }
         ]
     },
@@ -61,6 +63,11 @@ export const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register></Register>
+            },
+            {
+                path: "biodataDetails/:biodataId",
+                loader: ({ params }) => params.biodataId,
+                element : <BiodataDetails></BiodataDetails>
             }
 
         ]
@@ -75,32 +82,32 @@ export const router = createBrowserRouter([
                 element: <DashboardHome></DashboardHome>
             },
             {
-                path : "viewbiodata",
-                element : <ViewBiodata></ViewBiodata>
+                path: "viewbiodata",
+                element: <ViewBiodata></ViewBiodata>
             },
             {
-                path : "contactrequest",
-                element : <MyContact></MyContact>
+                path: "contactrequest",
+                element: <MyContact></MyContact>
             },
             {
-                path : "favbio",
-                element : <FavoriteBio></FavoriteBio>
+                path: "favbio",
+                element: <FavoriteBio></FavoriteBio>
             },
             {
-                path : "adminhome",
-                element : <AdminDashboard></AdminDashboard>
+                path: "adminhome",
+                element: <AdminDashboard></AdminDashboard>
             },
             {
-                path : "manageUsers",
-                element : <ManageUser></ManageUser>
+                path: "manageUsers",
+                element: <ManageUser></ManageUser>
             },
             {
-                path : "approvedPremium",
-                element : <ApprovedPremium></ApprovedPremium>
+                path: "approvedPremium",
+                element: <ApprovedPremium></ApprovedPremium>
             },
             {
-                path : "approvedContactRequest",
-                element : <ApprovedContact></ApprovedContact>
+                path: "approvedContactRequest",
+                element: <ApprovedContact></ApprovedContact>
             }
         ]
     }
