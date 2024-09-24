@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthInformation";
 import Swal from "sweetalert2";
-import "../App.css"
+import "../App.css";
+import { CgProfile } from "react-icons/cg";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 
 const NavBar = () => {
-
-
     const { user, logout } = useContext(AuthContext);
 
     const handlethelogout = () => {
@@ -86,18 +88,17 @@ const NavBar = () => {
                 <div className="nav-end">
                     <div>
                         <ul className="nav-menus">
-                            <li className="nav-menu">HOME</li>
-                            <li className="nav-menu">CONTACT</li>
-                            <li className="nav-menu">BRANDS</li>
-                            <li className="nav-menu">CARS</li>
-                            <li className="nav-menu">CATEGORY</li>
+                            {navMenus}
                         </ul>
                     </div>
-                    <div className="cart-icon">
-                        <i className="fa-solid fa-cart-shopping"></i>
+                    <div className="cart-icon text-6xl rounded-full">
+                        <CgProfile />
                     </div>
                     <div>
-                        <button className="login-button">LOG-IN</button>
+
+                        <Link to="login">
+                            <button className="cart-icon rounded-2xl px-3">LOG-IN</button>
+                        </Link>
                     </div>
                 </div>
                 <label className="hamburger-menu">

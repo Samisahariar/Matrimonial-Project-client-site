@@ -1,6 +1,7 @@
 import { AuthContext } from '../components/AuthInformation';
-import { Button } from "@/components/ui/button"
 import { useContext } from 'react';
+import HomePageCarousel from '../components/HomePageCarousel';
+import PremiumSection from '../components/PremiumSection';
 
 const HomePage = () => {
 
@@ -8,8 +9,8 @@ const HomePage = () => {
 
     return (
         <div>
-            this is the home page of this components {name}
-            <Button variant="destructive">this is the shadcn button</Button>
+            <HomePageCarousel></HomePageCarousel>
+            <PremiumSection></PremiumSection>
         </div>
     );
 };

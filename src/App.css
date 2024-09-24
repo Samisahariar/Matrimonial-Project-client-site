@@ -2,7 +2,8 @@
   --colorMain: #EE4266;
   --colorSecondnav: whitesmoke;
 }
-body{
+
+body {
   font-family: "Bona Nova", serif;
   font-weight: 400;
   font-style: normal;
@@ -10,16 +11,17 @@ body{
 
 .nav-bar {
   height: 80px;
-  background-color: whitesmoke;
+  background-color: transparent;
   display: flex;
   position: fixed;
   transition: background-color 5s;
   transition-delay: background-color 1s;
   transition-timing-function: ease-in-out;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
   top: 0;
 }
+
 .header {
   width: 100%;
 }
@@ -35,21 +37,15 @@ body{
   margin: 0px auto 0px auto;
 }
 
+/**********Nav-Menus************/
+
 .nav-menus {
   list-style: none;
   display: flex;
   height: 100%;
 }
 
-.nav-end {
-  display: flex;
-  column-gap: 30px;
-  justify-content: end;
-  width: 100%;
-
-}
-
-.nav-menu {
+.inactive {
   background-color: transparent;
   height: 100%;
   width: 90px;
@@ -61,26 +57,107 @@ body{
   transition: border-bottom .15s;
   transition-timing-function: ease-in-out;
 }
+
+.active {
+  background-color: transparent;
+  height: 100%;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  cursor: pointer;
+  border-bottom: 4px solid var(--colorMain);
+}
+
+.nav-end {
+  display: flex;
+  column-gap: 30px;
+  justify-content: end;
+  width: 100%;
+}
+
+
+.inactive:hover {
+  background-color: transparent;
+  border-bottom: 4px solid var(--colorMain);
+  color: black
+}
+
+
+
+
+
 .cart-icon {
-  height: 60px;
-  width: 60px;
   background-color: var(--colorMain);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   border: 0px;
-  border-radius: 90%;
   margin-top: 4px;
   transition: background-color .5s;
   transition-timing-function: ease-in-out;
 }
 
-.nav-menu:hover {
-  background-color: whitesmoke;
-  border-bottom: 4px solid var(--colorMain);
-  color: black
+
+
+/* carousel css all over the website  */
+.swiper {
+  width: 100%;
+  height: 100%;
 }
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--swiper-theme-color);
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: var(--swiper-theme-color);
+  fill: none;
+  stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
+}
+
+
+
+
+/* end of the carousel css */
+
 
 .cart-icon:hover {
   background-color: whitesmoke;
@@ -224,16 +301,6 @@ body{
   -webkit-backdrop-filter: blur(3px);
   border: 1px solid rgba(255, 255, 255, 0.09);
 }
-.active{
-  padding: 10px 4px 10px 10px;
-  color: red;
-  border-bottom-style: solid;
-  border-bottom-width: 10px;
-  border-bottom-color: red;
-}
-.inactive{
-  padding: 10px 4px 10px 10px;
-}
 
 .hamburger-menu:has(input:checked)+.navSideBar {
   translate: 0;
@@ -283,6 +350,7 @@ body{
   rotate: -45deg;
   background-color: var(--colorMain);
 }
+
 /* 
 hamburger-nav-section
 */
@@ -302,14 +370,16 @@ hamburger-nav-section
   z-index: 1;
   background-image: linear-gradient(to bottom, ED7B7B, whitesmoke);
 }
-.japanese-section{
+
+.japanese-section {
   display: flex;
   font-size: 36px;
   font-weight: bolder;
   width: max-content;
   margin: 12px auto 0px auto;
 }
-.japanese-navSection{
+
+.japanese-navSection {
   list-style: none;
   letter-spacing: 4px;
   color: whitesmoke;
@@ -319,14 +389,14 @@ hamburger-nav-section
 
 @media screen and (max-width: 900px) {
   .nav-end {
-      visibility: hidden;
+    visibility: hidden;
   }
 
   .hamburger-menu {
-      visibility: visible;
+    visibility: visible;
   }
 
   .innerdiv-nav {
-      width: 0px;
+    width: 0px;
   }
 }

@@ -1,7 +1,4 @@
-import {
-    createBrowserRouter,
-
-} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../components/Home";
 import HomePage from "../pages/HomePage";
@@ -20,7 +17,6 @@ import ManageUser from "../pages/Dashboard/admin/ManageUser";
 import ApprovedPremium from "../pages/Dashboard/admin/ApprovedPremium";
 import ApprovedContact from "../pages/Dashboard/admin/ApprovedContact";
 import BiodataDetails from "../pages/BiodataDetails";
-import Enter from "../pages/EntringPage/BackgroundBeams";
 import BackgroundBeams from "../pages/EntringPage/BackgroundBeams";
 
 
@@ -67,7 +63,7 @@ export const router = createBrowserRouter([
             {
                 path: "biodataDetails/:biodataId",
                 loader: ({ params }) => params.biodataId,
-                element : <BiodataDetails></BiodataDetails>
+                element: <BiodataDetails></BiodataDetails>
             }
 
         ]

@@ -7,6 +7,9 @@ import LottieAnimation from "../components/LottieAnimation";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
 
 const Login = () => {
 
@@ -18,7 +21,7 @@ const Login = () => {
 
 
     const handletoRegister = () => {
-       navigate("/main/register")
+        navigate("/main/register")
     }
 
     const handlethegoogle = () => {
@@ -31,21 +34,20 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        console.log(from)
         loginwithemail(email, password)
-        .then(result => {
-            setUser(result.user)
-            Swal.fire({
-                title: 'User Login Successful.',
-                showClass: {
-                    popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                    popup: 'animate__animated animate__fadeOutUp'
-                }
-            });
-            navigate(from, { replace: true });
-        })
+            .then(result => {
+                setUser(result.user)
+                Swal.fire({
+                    title: 'User Login Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });
+            })
             .catch(error => {
                 console.log(error)
             })
@@ -66,14 +68,8 @@ const Login = () => {
                 <form className="card-body" onSubmit={handlethelogin} method="dialog">
                     <h3 className="text-center text-3xl font-semibold dark:text-[#378CE7] text-[#FF204E]">LOG-IN</h3>
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input type="email"
-                            placeholder="email"
-                            name="email"
-                            /* ref={emailRef} */
-                            className="input input-bordered" required />
+                        <Label htmlFor="email">Email</Label>
+                        <Input type="email" id="email" placeholder="Email" name="email" required />
                     </div>
                     <div className="form-control">
                         <label className="label">

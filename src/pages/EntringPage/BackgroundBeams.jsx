@@ -1,7 +1,7 @@
 import { useAnimate } from "framer-motion";
 import { useContext, useEffect } from "react";
 import { motion } from "framer-motion";
-import { AspectRatio } from "./Aspectratio";
+
 import "../../App.css"
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../components/AuthInformation";
@@ -13,18 +13,18 @@ const DefaultQoutes = () => {
         <motion.div
             initial={{
                 opacity: 0,
-                x: 400
+                
             }}
             animate={{
                 opacity: 1,
-                x: 395,
+              
 
             }}
             transition={{ duration: 3 }}
-            className="text-center absolute top-[40%] glass-background p-10 font-semibold">
+            className="absolute top-[20%] left-[10%] text-center glass-background p-10 font-semibold">
             <h3 className=" text-6xl font-semibold text-white">Find Your Perfect Match and Create a <br /> Lifetime of <span className="text-red-500">Memories</span> .</h3>
             <Link to="/main/home">
-                <button className="cart-icon p-5 mx-auto">Start The Journey</button>
+                <button className="cart-icon p-4 rounded-2xl text-nowrap mx-auto">Start The Journey</button>
             </Link>
         </motion.div>
     )
@@ -61,10 +61,10 @@ const BackgroundBeams = () => {
             </motion.div>
             <div className="absolute top-0 right-1 flex gap-2">
                 <Link to="main/login">
-                    <button className="cart-icon w-[100px] font-semibold">LOG-IN</button>
+                    <button className="cart-icon w-[100px] font-semibold rounded-2xl px-10 text-nowrap">LOG-IN</button>
 
                 </Link>
-                <button className="cart-icon w-[100px] font-semibold">SIGN-UP</button>
+                <button className="cart-icon w-[100px] font-semibold rounded-2xl px-10 text-nowrap">SIGN-UP</button>
             </div>
             <div className="absolute top-2 left-4">
                 <ul className="siteName-lists">

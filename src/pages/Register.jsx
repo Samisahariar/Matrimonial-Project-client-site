@@ -5,6 +5,8 @@ import { AuthContext } from "../components/AuthInformation";
 import { ThreeCircles } from "react-loader-spinner";
 import useAxiosusPublic from "../hooks/useAxiosusPublic";
 import Swal from "sweetalert2";
+import { Button } from "@/components/ui/button"
+
 
 const Register = () => {
 
@@ -14,9 +16,12 @@ const Register = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+
+
     const onSubmit = (data) => {
         setLoader(true);
-        const { email, name, password, photoURL } = data;
+        
+       /*  const { email, name, password, photoURL } = data;
         signinwithemail(email, password)
             .then(res => {
                 const loggedUser = res.user;
@@ -63,7 +68,7 @@ const Register = () => {
                 setLoader(false)
                 console.log(error.message)
 
-            })
+            }) */
     }
 
 
@@ -84,11 +89,21 @@ const Register = () => {
                             {errors.name && <span className="text-red-600">Name is required</span>}
                         </div>
                         <div className="form-control">
-                            <label className="label">
+                            {/*                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
                             <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
-                            {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
+                            {errors.photoURL && <span className="text-red-600">Photo URL is required</span>} */}
+
+                            <div className="grid w-full max-w-sm items-center gap-1.5">
+
+                              {/*   <Label htmlFor="picture">Picture</Label>
+                                <Input id="picture" type="file" /> */}
+
+                            </div>
+
+
+
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -131,9 +146,12 @@ const Register = () => {
                                     : <input className="btn btn-primary" type="submit" value="Sign Up" />
                             }
                         </div>
+                        <Button>saklain sahariar and all the fuckers</Button>
+                        <h3>saklain and all the fuckers</h3>
                     </form>
                     <p className="px-6"><small>Already have an account <Link to="/main/login" className="text-blue-400">Login</Link></small></p>
                 </div>
+
             </div>
         </div>
     );
