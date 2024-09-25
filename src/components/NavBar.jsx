@@ -77,12 +77,13 @@ const NavBar = () => {
             <div className="innerdiv-nav">
                 <div className="site-nameSection">
                     <ul className="siteName-lists">
-                        <li className="site-namenav1">P</li>
-                        <li className="site-namenav2">h</li>
-                        <li className="site-namenav3">e</li>
-                        <li className="site-namenav4">n</li>
-                        <li className="site-namenav5">i</li>
-                        <li className="site-namenav6">X</li>
+                        <li className="site-namenav1">M</li>
+                        <li className="site-namenav2">U</li>
+                        <li className="site-namenav3">S</li>
+                        <li className="site-namenav4">L</li>
+                        <li className="site-namenav5">I</li>
+                        <li className="site-namenav6">M</li>
+                        <li className="site-namenav7">A</li>
                     </ul>
                 </div>
                 <div className="nav-end">

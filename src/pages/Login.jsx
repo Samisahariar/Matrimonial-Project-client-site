@@ -6,7 +6,13 @@ import google from "../assets/images/google-symbol.png"
 import LottieAnimation from "../components/LottieAnimation";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+//shadcn ui all components are here down below!!
+import { AlertCircle } from "lucide-react";
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle
+} from "@/components/ui/alert"
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -26,6 +32,18 @@ const Login = () => {
 
     const handlethegoogle = () => {
         console.log("login with the google and the user of this site so far so right here")
+    }
+
+    const Alertcomponent = () => {
+        return (
+            <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                   Somethig is went worng !!
+                </AlertDescription>
+            </Alert>
+        )
     }
 
     const handlethelogin = (event) => {
@@ -49,7 +67,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error)
+               <Alertcomponent></Alertcomponent>
             })
     }
     const handlthelogout = () => {
@@ -72,10 +90,8 @@ const Login = () => {
                         <Input type="email" id="email" placeholder="Email" name="email" required />
                     </div>
                     <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Password</span>
-                        </label>
-                        <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+                        <Label htmlFor="email">Password</Label>
+                        <Input type="password" id="password" placeholder="Email" name="password" required />
                     </div>
                     <p className="text-center">Also log-in With :</p>
                     <div className="flex flex-col gap-2">

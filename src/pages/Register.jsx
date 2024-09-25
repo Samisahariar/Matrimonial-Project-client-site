@@ -6,7 +6,12 @@ import { ThreeCircles } from "react-loader-spinner";
 import useAxiosusPublic from "../hooks/useAxiosusPublic";
 import Swal from "sweetalert2";
 import { Button } from "@/components/ui/button"
-
+//shadcn ui are all up down below !!
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+//lottie animations
+import Lottie from "lottie-react";
+import signupAnimations from "../animations/Signupanimations.json";
 
 const Register = () => {
 
@@ -20,8 +25,9 @@ const Register = () => {
 
     const onSubmit = (data) => {
         setLoader(true);
-        
-       /*  const { email, name, password, photoURL } = data;
+
+        const { email, name, password, photoURL } = data;
+        console.log(data)
         signinwithemail(email, password)
             .then(res => {
                 const loggedUser = res.user;
@@ -68,24 +74,20 @@ const Register = () => {
                 setLoader(false)
                 console.log(error.message)
 
-            }) */
+            });
     }
+
+    const SignupAnime = () => <Lottie animationData={signupAnimations} className="h-[70vh]"></Lottie>
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Sign up now!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="flex mx-auto flex-row w-[80%]">
+            <div className="flex-col w-[50%]">
+                <div className="flex-shrink-0 w-full h-[60%] py-[20%]">
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
+                            <Label htmlFor="email">User-Name</Label>
+                            <Input type="text"  {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" required />
                             {errors.name && <span className="text-red-600">Name is required</span>}
                         </div>
                         <div className="form-control">
@@ -97,7 +99,7 @@ const Register = () => {
 
                             <div className="grid w-full max-w-sm items-center gap-1.5">
 
-                              {/*   <Label htmlFor="picture">Picture</Label>
+                                {/*   <Label htmlFor="picture">Picture</Label>
                                 <Input id="picture" type="file" /> */}
 
                             </div>
@@ -106,22 +108,20 @@ const Register = () => {
 
                         </div>
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
+                            <Label htmlFor="email">Email</Label>
+                            <Input type="email"  {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" required />
                             {errors.email && <span className="text-red-600">Email is required</span>}
                         </div>
                         <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password"  {...register("password", {
+
+                            <Label htmlFor="email">Email</Label>
+                            <Input type="password"  {...register("password", {
                                 required: true,
                                 minLength: 6,
                                 maxLength: 20,
                                 pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                            })} placeholder="password" className="input input-bordered" />
+                            })} name="password" placeholder="password" className="input input-bordered" required />
+
                             {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                             {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                             {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
@@ -143,15 +143,17 @@ const Register = () => {
                                         wrapperClass=""
                                     />
 
-                                    : <input className="btn btn-primary" type="submit" value="Sign Up" />
+                                    : <Button type="submit">Sign Up</Button>
                             }
                         </div>
-                        <Button>saklain sahariar and all the fuckers</Button>
-                        <h3>saklain and all the fuckers</h3>
+
                     </form>
                     <p className="px-6"><small>Already have an account <Link to="/main/login" className="text-blue-400">Login</Link></small></p>
                 </div>
 
+            </div>
+            <div className="py-10">
+                <SignupAnime></SignupAnime>
             </div>
         </div>
     );
