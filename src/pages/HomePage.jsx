@@ -4,6 +4,7 @@ import HomePageCarousel from '../components/HomePageCarousel';
 import PremiumSection from '../components/PremiumSection';
 import { ThreeDCardDemo } from '@/components/ui/ThreeDCardDemo';
 
+
 const HomePage = () => {
 
     const { name } = useContext(AuthContext);
