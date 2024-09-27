@@ -32,8 +32,11 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(238, 66, 102, 1.0), 0px 0px 0px 1px rgba(238, 66, 102, 1.0)`,
+      },
       colors: {
-        border: "hsl(var(--border))",
+        border: "rgba(238, 66, 102, 1.0)",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
@@ -81,10 +84,20 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
+      
       },
     },
   },

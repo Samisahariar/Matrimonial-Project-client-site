@@ -5,7 +5,6 @@ const DashBoard = () => {
     return (
         <div className="flex">
             <DashNav></DashNav>
-            <Outlet></Outlet>
         </div>
     );
 };

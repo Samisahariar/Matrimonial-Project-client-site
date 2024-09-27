@@ -5,13 +5,19 @@ import { AuthContext } from "../components/AuthInformation";
 import { ThreeCircles } from "react-loader-spinner";
 import useAxiosusPublic from "../hooks/useAxiosusPublic";
 import Swal from "sweetalert2";
-import { Button } from "@/components/ui/button"
-//shadcn ui are all up down below !!
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 //lottie animations
 import Lottie from "lottie-react";
 import signupAnimations from "../animations/Signupanimations.json";
+//accernity uis all imports are all here down below
+import { Label } from "../components/ui/label";
+import { Input } from "../components/ui/input";
+import { cn } from "@/lib/utils";
+import {
+    IconBrandGithub,
+    IconBrandGoogle,
+    IconBrandOnlyfans,
+} from "@tabler/icons-react";
 
 const Register = () => {
 
