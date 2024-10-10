@@ -87,26 +87,40 @@ const DashNav = () => {
                 <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
+        {
+            label: "Log Out",
+            href: "#",
+            icon: (
+                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+            ),
+        },
     ] : [
         {
-            label: "Dashboard",
-            href: "#",
+            label: "Edit biodata",
+            href: "/dashboard/profileCrud",
             icon: (
                 <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
         {
-            label: "Profile",
-            href: "#",
+            label: "View Biodata",
+            href: "/dashboard/viewbiodata",
             icon: (
                 <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
         {
-            label: "Settings",
-            href: "#",
+            label: "My Contact Reaquest",
+            href: "/dashboard/contactrequest",
             icon: (
                 <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+            ),
+        },
+        {
+            label: "Favorite Biodata",
+            href: "/dashboard/favbio",
+            icon: (
+                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
         {
