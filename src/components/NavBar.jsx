@@ -76,7 +76,7 @@ const NavBar = () => {
         <nav className="nav-bar">
             <div className="innerdiv-nav">
                 <div className="site-nameSection">
-                    <ul className="siteName-lists">
+                    <ul className="siteName-lists playfair-font">
                         <li className="site-namenav1">M</li>
                         <li className="site-namenav2">U</li>
                         <li className="site-namenav3">S</li>
@@ -96,10 +96,10 @@ const NavBar = () => {
                         <CgProfile />
                     </div>
                     <div>
-
-                        <Link to="login">
-                            <button className="cart-icon rounded-2xl px-3">LOG-IN</button>
-                        </Link>
+                        {
+                            user ? <button className="cart-icon rounded-2xl px-3" onClick={handlethelogout}>LOG-OUT</button> : <Link to="login"><button className="cart-icon rounded-2xl px-3">LOG-IN</button></Link>
+                        }
+                        
                     </div>
                 </div>
                 <label className="hamburger-menu">

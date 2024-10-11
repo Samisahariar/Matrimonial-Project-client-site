@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+
+
 :root {
   --colorMain: #EE4266;
   --colorSecondnav: whitesmoke;
@@ -6,6 +10,11 @@
 body {
   font-family: "Bona Nova", serif;
   font-weight: 400;
+  font-style: normal;
+}
+.playfair-font {
+  font-family: "Playfair", serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }
 

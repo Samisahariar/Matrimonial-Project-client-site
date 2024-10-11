@@ -56,8 +56,7 @@ const DashNav = () => {
 
 
 
-    /* const [isAdmin, isAdminLoading] = useAdmins(); */
-    const isAdmin = true;
+    const [isAdmin, isAdminLoading] = useAdmins();
     const links = isAdmin ? [
         {
             label: "Admin Dashboard",
