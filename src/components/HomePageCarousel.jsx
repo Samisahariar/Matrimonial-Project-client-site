@@ -8,13 +8,15 @@ import { ImagesSlider } from "../components/ui/images-slider";
 import { FlipWords } from './ui/flip-words';
 import "../App.css"
 import { fadeIn } from "../components/variants"
-import { useScrollOpacity } from "../hooks/useScrollOpacity"
+import useScrollOpacity from "../hooks/useScrollOpacity";
+import Lottie from "lottie-react";
+import scrollDown from "../animations/ScrollDown.json"
 
+
+const ScrollAnimation = () => <Lottie animationData={scrollDown} loop={true}></Lottie>
 
 const HomePageCarousel = () => {
-
     const [opacity, componentRef] = useScrollOpacity();
-
     const images = [
         "https://i.ibb.co/rZ8FBn8/chi-n-ph-m-njt-Yf7-Pd-Vqw-unsplash.jpg",
         "https://i.ibb.co/y6ScVPb/photo-nic-JQ8-x-G3k-Hjk-unsplash.jpg",
@@ -23,7 +25,6 @@ const HomePageCarousel = () => {
         "https://i.ibb.co/54knwC6/andrew-itaga-Kx22w26-HUd8-unsplash.jpg"
     ];
     const words = ["Perfect", "Impecable"]
-
     return (
         <ImagesSlider
             className="h-[100vh] relative" images={images}>
@@ -36,8 +37,10 @@ const HomePageCarousel = () => {
                 className="z-50 absolute left-20 bottom-85 text-5xl playfair-font"
             >
                 <span className="text-white">Perfect Place to find the</span> <br /> <FlipWords words={words} className="text-red-500" /><span className='text-white'>match for you</span>
-
             </motion.div>
+            <div className="z-50 absolute left-[50%] bottom-5 text-7xl text-red">
+                <ScrollAnimation ></ScrollAnimation>
+            </div>
         </ImagesSlider>
     );
 };
