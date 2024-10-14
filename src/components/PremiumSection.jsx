@@ -28,7 +28,7 @@ const PremiumSection = () => {
                 whileInView={"show"}
                 viewport={{once: false, amount: 0.7}}
                 style={{opacity: opacity}}
-                className='mt-[10%] text-6xl playfair-font text-center'>Premium Members</motion.h3>
+                className='mt-[10%] text-6xl playfair-font text-center'>Premium <span className="text-[#EE4266]">Members</span></motion.h3>
             <div className='mx-auto grid-cols-2 grid w-[100%] gap-6'>
                 {
                     premiumMembers?.map((singledata, idx) => <PremiunSectionCard singledata={singledata} number={idx}></PremiunSectionCard>)

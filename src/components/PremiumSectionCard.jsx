@@ -3,9 +3,32 @@ import { motion } from "framer-motion";
 import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
 import { fadeIn } from "./variants";
 import useScrollOpacity from "@/hooks/useScrollOpacity";
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "../components/ui/table";
 
-const PremiunSectionCard = ({ number }) => {
-    const animationDirection = ["right", "up", "left"]
+
+
+
+
+const PremiunSectionCard = ({ number, singledata }) => {
+    const animationDirection = ["right", "up", "left"];
+    const { name, age, gender, biodataId,
+        permanentdiv,
+        occupation } = singledata;
+
+
+    const handletheviewDetails = () =>{
+        
+    }
+
     return (
         <motion.div
             variants={fadeIn(animationDirection[(number) % 3], 0.3, 1)}
@@ -28,38 +51,43 @@ const PremiunSectionCard = ({ number }) => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <h3>Make things float in air</h3>
-                            <span className="text-sm">Biodata ID : </span>
+                            <h3>{name}</h3>
+                            <span className="text-sm">Biodata ID : {biodataId}</span>
                         </div>
                     </CardItem>
-                    <CardItem
-                        as="p"
-                        translateZ="60"
-                        className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-                    >
-                        Hover over this card to unleash the power of CSS perspective
-                    </CardItem>
+
                     <CardItem
                         translateZ="100"
                         rotateX={20}
                         rotateZ={-10}
                         className="w-full mt-4"
                     >
+                        <Table>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell className="font-medium">Gender</TableCell>
+                                    <TableCell className="text-right">{gender}</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className="font-medium">Permanent Address</TableCell>
+                                    <TableCell className="text-right">{permanentdiv}</TableCell>
+                                </TableRow>
+                                
+                                <TableRow>
+                                    <TableCell className="font-medium">Occupation</TableCell>
+                                    <TableCell className="text-right">{occupation}</TableCell>
+                                </TableRow>
+
+                            </TableBody>
+                        </Table>
                     </CardItem>
                     <div className="flex justify-between items-center mt-20">
                         <CardItem
                             translateZ={20}
-                            translateX={-40}
-                            as="button"
-                            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-                        >
-                            Try now →
-                        </CardItem>
-                        <CardItem
-                            translateZ={20}
                             translateX={40}
                             as="button"
-                            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                            onClick={handletheviewDetails}
+                            className="px-4 py-2 rounded-xl bg-[#EE4266] dark:bg-white dark:text-black text-white text-xs font-bold"
                         >
                             View-Details
                         </CardItem>
