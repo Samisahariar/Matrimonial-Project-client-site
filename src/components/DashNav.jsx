@@ -3,7 +3,7 @@ import useAdmins from '../hooks/useAdmins';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 //acernity ui all imports
-import { Sidebar, SidebarBody, SidebarLink } from "../components/ui/sidebar";
+import { SidebarLink, DesktopSidebar, MobileSidebar, SidebarBody } from "../components/ui/sidebar";
 import {
     IconArrowLeft,
     IconBrandTabler,
@@ -14,15 +14,11 @@ import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import { Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-import { useState } from 'react';
-
-
+import { useEffect, useState } from 'react';
+import { MdFavoriteBorder } from "react-icons/md";
+import { CiLogout } from "react-icons/ci";
 
 export const Logo = () => {
-
-    
-
-
     return (
         <Link
             href="#"
@@ -54,15 +50,27 @@ export const LogoIcon = () => {
 
 
 const DashNav = () => {
+    const [mobileScreen, setMobileScreen] = useState("null")
     //acernity ui dash links are all here at the start
-    const handleScreenChange = () =>{
-        if(window.innerWidth <= 768){
-            console.log("mobile screen is appeared !!")
-        }else{
-            console.log("mobile screen is out !!")
+    useEffect(() => {
+        if (window.innerWidth <= 768) {
+            setMobileScreen("yes")
+        } else {
+            setMobileScreen("no")
+        }
+
+    }, [])
+    const handleScreenChange = () => {
+        if (window.innerWidth <= 768) {
+            setMobileScreen("yes")
+        } else {
+            setMobileScreen("no")
         }
     }
+
     window.addEventListener('resize', handleScreenChange)
+
+    console.log(mobileScreen)
 
 
     const [open, setOpen] = useState(false);
@@ -129,14 +137,14 @@ const DashNav = () => {
             label: "Favorite Biodata",
             href: "/dashboard/favbio",
             icon: (
-                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <MdFavoriteBorder className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         },
         {
             label: "Logout",
             href: "#",
             icon: (
-                <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                <CiLogout className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
             ),
         }
     ];
@@ -148,7 +156,7 @@ const DashNav = () => {
                 // for your use case, use `h-screen` instead of `h-[60vh]`
             )}
         >
-            <Sidebar open={open} setOpen={setOpen}>
+            {/* <Sidebar open={open} setOpen={setOpen}>
                 <SidebarBody className="justify-between gap-10">
                     <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
                         {open ? <Logo /> : <LogoIcon />}
@@ -170,11 +178,65 @@ const DashNav = () => {
                         />
                     </div>
                 </SidebarBody>
-            </Sidebar>
-            <Outlet></Outlet>
+            </Sidebar> */}
+
+            {
+                mobileScreen === "yes" ? <MobileSidebar>
+                    <SidebarBody className="justify-between gap-10">
+                        <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+                            {open ? <Logo /> : <LogoIcon />}
+                            <div className="mt-8 flex flex-col gap-2">
+                                {links.map((link, idx) => (
+                                    <SidebarLink key={idx} link={link} />
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <SidebarLink
+                                link={{
+                                    label: "Home",
+                                    href: "/main/home",
+                                    icon: (
+                                        <FaHome className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                                    ),
+                                }}
+                            />
+                        </div>
+                    </SidebarBody>
+                    <SidebarLink link={{ links }} />
+                </MobileSidebar> :
+                    <DesktopSidebar>
+                        <SidebarBody className="justify-between gap-10">
+                            <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+                                {open ? <Logo /> : <LogoIcon />}
+                                <div className="mt-8 flex flex-col gap-2">
+                                    {links.map((link, idx) => (
+                                        <SidebarLink key={idx} link={link} />
+                                    ))}
+                                </div>
+                            </div>
+                            <div>
+                                <SidebarLink
+                                    link={{
+                                        label: "Home",
+                                        href: "/main/home",
+                                        icon: (
+                                            <FaHome className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+                                        ),
+                                    }}
+                                />
+                            </div>
+                        </SidebarBody>
+                        <SidebarLink link={{ links }} />
+                    </DesktopSidebar>
+            }
+            <div className='w-full'>
+                <Outlet></Outlet>
+            </div>
         </div>
 
     );
 };
+
 
 export default DashNav

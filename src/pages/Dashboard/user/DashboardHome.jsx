@@ -81,11 +81,11 @@ const DashboardHome = () => {
 
 
     return (
-        <div className="w-full">
+        <div className="w-full relative">
             <h3 className="text-center text-5xl">Bio-Data Form : </h3>
-            <form action="" onSubmit={handlthesubmitbio} className="max-w-[60vw] mx-auto">
+            <form action="" onSubmit={handlthesubmitbio} className="mt-[10%] max-w-[80vw] mx-auto">
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-10 ">
                     <div>
                         <label className="sr-only">Underline select</label>
                         <select name="gender" id="underline_select" className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -103,7 +103,7 @@ const DashboardHome = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-10">
                     <div className="flex ">
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
                         <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
@@ -131,7 +131,7 @@ const DashboardHome = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-10">
                     <div className="relative z-0 w-full mb-5 group">
                         <input type="text" name="age" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Age</label>
@@ -157,7 +157,7 @@ const DashboardHome = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-10">
                     <div className="relative z-0 w-full mb-5 group">
                         <input type="text" name="fathersname" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                         <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Fathers Name</label>
@@ -182,7 +182,7 @@ const DashboardHome = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-10">
                     <div>
                         <label className="sr-only">Underline select</label>
                         <select name="presentdiv" id="underline_select" className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -212,7 +212,7 @@ const DashboardHome = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-10">
                     <div>
                         <label className="sr-only">Underline select</label>
                         <select name="expartnerweight" id="underline_select" className="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
@@ -238,8 +238,6 @@ const DashboardHome = () => {
                 {
                     isBioData ? <input type="submit" value="Update" className="btn btn-primary" /> :
                         <input type="submit" value="Create" className="btn btn-primary" />
-
-
                 }
 
             </form>
