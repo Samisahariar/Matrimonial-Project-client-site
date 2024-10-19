@@ -3,7 +3,6 @@ import useAdmins from '../hooks/useAdmins';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 //acernity ui all imports
-import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "../components/ui/sidebar";
 import {
     IconArrowLeft,
@@ -15,10 +14,15 @@ import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { cn } from "@/lib/utils";
 import { Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { useState } from 'react';
 
 
 
 export const Logo = () => {
+
+    
+
+
     return (
         <Link
             href="#"
@@ -51,11 +55,17 @@ export const LogoIcon = () => {
 
 const DashNav = () => {
     //acernity ui dash links are all here at the start
+    const handleScreenChange = () =>{
+        if(window.innerWidth <= 768){
+            console.log("mobile screen is appeared !!")
+        }else{
+            console.log("mobile screen is out !!")
+        }
+    }
+    window.addEventListener('resize', handleScreenChange)
+
 
     const [open, setOpen] = useState(false);
-
-
-
     const [isAdmin, isAdminLoading] = useAdmins();
     const links = isAdmin ? [
         {
@@ -147,7 +157,7 @@ const DashNav = () => {
                                 <SidebarLink key={idx} link={link} />
                             ))}
                         </div>
-                    </div>
+                    </div>3
                     <div>
                         <SidebarLink
                             link={{
