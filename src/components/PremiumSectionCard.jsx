@@ -13,9 +13,7 @@ import {
     TableHeader,
     TableRow,
 } from "../components/ui/table";
-
-
-
+import { useNavigate } from "react-router-dom";
 
 
 const PremiunSectionCard = ({ number, singledata }) => {
@@ -23,10 +21,11 @@ const PremiunSectionCard = ({ number, singledata }) => {
     const { name, age, gender, biodataId,
         permanentdiv,
         occupation } = singledata;
+    const navigate = useNavigate()
 
 
     const handletheviewDetails = () =>{
-        
+        navigate
     }
 
     return (
